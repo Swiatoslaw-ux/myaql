@@ -1,0 +1,4 @@
+INSERT INTO faculty (name, group_count, student_count)
+VALUES 
+('Інформатика', 5, 120),
+('Математика', 3, 80);
