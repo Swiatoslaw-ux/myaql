@@ -1,0 +1,17 @@
+<?php
+$conn = new mysqli("localhost", "root", "", "university");
+if ($conn->connect_error) {
+    die("Помилка: " . $conn->connect_error);
+}
+
+$name = "Фізика";
+$groups = 4;
+$students = 95;
+
+$stmt = $conn->prepare("INSERT INTO faculty (name, group_count, student_count) VALUES (?, ?, ?)");
+$stmt->bind_param("sii", $name, $groups, $students);
+$stmt->execute();
+
+echo "Дані додано!";
+$conn->close();
+?>
