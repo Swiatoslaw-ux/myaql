@@ -1,0 +1,13 @@
+<?php
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=university", "root", "");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt = $pdo->query("SELECT * FROM faculty");
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo "Факультет: {$row['name']}, Груп: {$row['group_count']}, Студентів: {$row['student_count']}<br>";
+    }
+} catch (PDOException $e) {
+    echo "Помилка: " . $e->getMessage();
+}
+?>
