@@ -1,0 +1,12 @@
+<?php
+$conn = new mysqli("localhost", "root", "", "university");
+if ($conn->connect_error) {
+    die("Помилка підключення: " . $conn->connect_error);
+}
+
+$result = $conn->query("SELECT * FROM faculty");
+while ($row = $result->fetch_assoc()) {
+    echo "Факультет: {$row['name']}, Груп: {$row['group_count']}, Студентів: {$row['student_count']}<br>";
+}
+$conn->close();
+?>
